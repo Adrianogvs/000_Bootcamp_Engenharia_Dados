@@ -44,3 +44,6 @@ print(par_impar(nota))
 
     
 # %%
+
+
+#%%
