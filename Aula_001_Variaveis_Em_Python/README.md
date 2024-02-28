@@ -12,9 +12,11 @@ Além disso, vamos criar nossa primeira aplicação em Python, e estou muito emp
 
 Escreva um programa em Python que solicita ao usuário para digitar seu nome, o valor do seu salário mensal e o valor do bônus que recebeu. O programa deve, então, imprimir uma mensagem saudando o usuário pelo nome e informando o valor do salário em comparação com o bônus recebido.
 
-![imagem](001.png)
 
-![imagem](002.png)
+![imagem](https://raw.githubusercontent.com/Adrianogvs/000_Bootcamp_Engenharia_Dados/main/Aula_001_Variaveis_Em_Python/image/001.png)
+
+
+![imagem](https://raw.githubusercontent.com/Adrianogvs/000_Bootcamp_Engenharia_Dados/main/Aula_001_Variaveis_Em_Python/image/002.png)
 
 ## Agenda (1 hora)
 
@@ -246,9 +248,9 @@ Qual é o seu nome? Adriano
 
 Escreva um programa em Python que solicita ao usuário para digitar seu nome, o valor do seu salário mensal e o valor do bônus que recebeu. O programa deve, então, imprimir uma mensagem saudando o usuário pelo nome e informando o valor do salário em comparação com o bônus recebido.
 
-![imagem](003.png)
+![imagem](https://raw.githubusercontent.com/Adrianogvs/000_Bootcamp_Engenharia_Dados/main/Aula_001_Variaveis_Em_Python/image/003.png)
 
-![imagem](004.png)
+![imagem](https://raw.githubusercontent.com/Adrianogvs/000_Bootcamp_Engenharia_Dados/main/Aula_001_Variaveis_Em_Python/image/004.png)
 
 #### Instruções:
 
