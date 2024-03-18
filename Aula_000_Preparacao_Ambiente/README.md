@@ -40,6 +40,26 @@ print("Olá, mundo!")
 Essas são apenas algumas das formatações básicas disponíveis em Markdown. Existem muitas outras opções e variações, mas essas são as mais comuns.
 
 
+## Primeiro passo a ser realizado é instalar o pyenv, no caso de SO Windows, usa o link abaixo:
+
+https://github.com/pyenv-win/pyenv-win
+
+Logo após abre o PowerShell e colar esse código:
+
+```
+Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
+```
+
+![!\[alt text\](image.png)](pic/powershell.png)
+
+Logo após verificar se o pyenv foi instado na maquina, basta acessar o bash e digitar o seguinte código:
+
+```
+$ pyenv --version
+```
+![alt text](pic/pyenv.png)
+
+
 ## Remover bibliotecas python
 `pip freeze | grep -v "^-e" | xargs pip uninstall -y`
 
