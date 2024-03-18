@@ -63,10 +63,28 @@ $ pyenv --version
 ## Remover bibliotecas python
 `pip freeze | grep -v "^-e" | xargs pip uninstall -y`
 
+## Remover todas as versões do pyenv
+
+```
+$ #!/bin/bash
+
+versions=$(pyenv versions --bare)
+
+for version in $versions
+do
+    if [[ $version != "*" ]]; then
+        echo "Removendo a versão $version..."
+        pyenv uninstall $version
+    fi
+done
+```
+
+
 ## Erro durante a instalação do ipython
 
 Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados (main)
-`$ pipx install ipython --force`
+```
+$ pipx install ipython --force`
 ```
 creating virtual environment...
 installing ipython...
