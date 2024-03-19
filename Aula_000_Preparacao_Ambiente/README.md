@@ -86,6 +86,7 @@ Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados (main)
 ```
 $ pipx install ipython --force`
 ```
+```
 creating virtual environment...
 installing ipython...
 Note: 'C:\Users\Adriano\.local\bin' is not on your PATH environment
@@ -100,38 +101,45 @@ Installing to existing venv 'ipython'
     - ipython3.exe
   These manual pages are now globally available
     - man1\ipython.1
+    ´
 ```
 
 'Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados (main)
-`$ ipython -i`
+```
+$ ipython -i
+```
 
 ```
 bash: ipython: command not found
 ```
-
-
 Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados (main)
-`$ export PATH="$PATH:/c/Users/Adriano/.local/bin"`
-
+```
+$ export PATH="$PATH:/c/Users/Adriano/.local/bin"
+```
 Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados (main)
-`$ ipython -i`
+```
+$ ipython -i`
 ```
 Python 3.12.1 (tags/v3.12.1:2305ca5, Dec  7 2023, 22:03:25) [MSC v.1937 64 bit (AMD64)]
 Type 'copyright', 'credits' or 'license' for more information
 IPython 8.22.1 -- An enhanced Interactive Python. Type '?' for help.
 ```
-
-`In [1]:`
+In [1]:
+```
 
 
 ## Recriando pasta django com poetry
 Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados (main)
 
-`$ poetry config virtualenvs.in-project true`
+```
+$ poetry config virtualenvs.in-project true
+```
+
 
 Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados (main)
 
-`$ poetry new projeto_django`
+```
+$ poetry new projeto_django
 ```
 Created package projeto_django in projeto_django
 ```
@@ -142,10 +150,14 @@ Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados (main)
 
 Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados/projeto_django (main)
 
-`$ poetry env use 3.12.1`
+`
+$ poetry env use 3.12.1
+`
 ```
 Creating virtualenv projeto-django in C:\Users\Adriano\Documents\GitHub\000_Bootcamp_Engenharia_Dados\projeto_django\.venv
 Using virtualenv: C:\Users\Adriano\Documents\GitHub\000_Bootcamp_Engenharia_Dados\projeto_django\.venv
 ```
 Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados/projeto_django (main)
-`$ poetry add django`
+```
+```
+$ poetry add django
