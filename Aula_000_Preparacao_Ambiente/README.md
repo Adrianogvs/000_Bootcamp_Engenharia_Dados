@@ -39,6 +39,38 @@ print("Olá, mundo!")
 
 Essas são apenas algumas das formatações básicas disponíveis em Markdown. Existem muitas outras opções e variações, mas essas são as mais comuns.
 
+## Limpeza do Ambiente Local antes de Iniciar um Projeto
+Antes de iniciar um novo projeto, é altamente recomendável realizar uma limpeza do ambiente local do seu computador, removendo bibliotecas Python instaladas globalmente e desinstalando todas as versões do Pyenv que não são mais necessárias. Isso ajuda a garantir que o ambiente de desenvolvimento esteja limpo e preparado para o novo projeto, evitando conflitos de dependências e mantendo a integridade do ambiente de desenvolvimento.
+
+Aqui estão algumas instruções para realizar essa limpeza:
+
+### Remoção de Bibliotecas Python Global
+Para remover bibliotecas Python instaladas globalmente, você pode usar o seguinte comando:
+```bash
+pip freeze | grep -v "^-e" | xargs pip uninstall -y
+```
+Este comando lista todas as bibliotecas Python instaladas globalmente, excluindo aquelas que são instaladas a partir de URLs (-e), e, em seguida, desinstala todas elas automaticamente.
+
+## Remoção de Todas as Versões do Pyenv
+Se deseja remover todas as versões do Pyenv, pode usar o seguinte script em shell:
+```bash
+#!/bin/bash
+
+versions=$(pyenv versions --bare)
+
+for version in $versions
+do
+    if [[ $version != "*" ]]; then
+        echo "Removendo a versão $version..."
+        pyenv uninstall $version
+    fi
+done
+
+```
+Este script obtém todas as versões do Pyenv e executa um loop sobre elas, desinstalando cada versão individualmente, exceto a versão atualmente em uso (indicada pelo asterisco * ao lado dela). Certifique-se de executar este script com cuidado, pois removerá permanentemente todas as versões do Python gerenciadas pelo Pyenv.
+
+Realizar essa limpeza do ambiente local antes de iniciar um novo projeto pode ajudar a garantir que você tenha um ambiente de desenvolvimento limpo e configurado corretamente para o novo projeto.
+
 
 ## Primeiro passo a ser realizado é instalar o pyenv, no caso de SO Windows, usa o link abaixo:
 
@@ -102,106 +134,130 @@ $ pyenv local 3.12.1
 ```
 ![!\[alt text\](image.png)](pic/configirando_pyenv_local.png)
 
+## Preparação do Ambiente para Projeto Pandas
 
-## Remover bibliotecas python global
-`pip freeze | grep -v "^-e" | xargs pip uninstall -y`
+Este repositório contém os passos necessários para configurar o ambiente de desenvolvimento para um projeto utilizando a biblioteca Pandas.
 
-## Remover todas as versões do pyenv
+### Passos
 
-```
-$ #!/bin/bash
+1. Navegue até o diretório do projeto:
 
-versions=$(pyenv versions --bare)
+    ```bash
+    cd Aula_000_Preparacao_Ambiente/
+    ```
 
-for version in $versions
-do
-    if [[ $version != "*" ]]; then
-        echo "Removendo a versão $version..."
-        pyenv uninstall $version
-    fi
-done
-```
+2. Verifique o conteúdo do diretório:
 
+    ```bash
+    ls -la
+    ```
 
+3. Acesse o diretório do projeto Pandas:
 
-## Erro durante a instalação do ipython
+    ```bash
+    cd projeto_pandas/
+    ```
 
-Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados (main)
-```
-$ pipx install ipython --force`
-```
-```
-creating virtual environment...
-installing ipython...
-Note: 'C:\Users\Adriano\.local\bin' is not on your PATH environment
-    variable. These apps will not be globally accessible until your PATH is
-    updated. Run `pipx ensurepath` to automatically add it, or manually modify
-    your PATH in your shell's config file (i.e. ~/.bashrc).
-done!
-Installing to existing venv 'ipython'
-  installed package ipython 8.22.1, installed using Python 3.12.1
-  These apps are now globally available
-    - ipython.exe
-    - ipython3.exe
-  These manual pages are now globally available
-    - man1\ipython.1
-    ´
-```
+4. Crie um ambiente virtual Python:
 
-'Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados (main)
-```
-$ ipython -i
-```
+    ```bash
+    python -m venv .venv
+    ```
 
-```
-bash: ipython: command not found
-```
-Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados (main)
-```
-$ export PATH="$PATH:/c/Users/Adriano/.local/bin"
-```
-Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados (main)
-```
-$ ipython -i`
-```
-Python 3.12.1 (tags/v3.12.1:2305ca5, Dec  7 2023, 22:03:25) [MSC v.1937 64 bit (AMD64)]
-Type 'copyright', 'credits' or 'license' for more information
-IPython 8.22.1 -- An enhanced Interactive Python. Type '?' for help.
-```
-In [1]:
-```
+5. Ative o ambiente virtual:
+
+    ```bash
+    source .venv/Scripts/activate
+    ```
+
+6. Instale a biblioteca Pandas:
+
+    ```bash
+    pip install pandas
+    ```
+
+7. (Opcional) Atualize o pip, se necessário:
+
+    ```bash
+    python -m pip install --upgrade pip
+    ```
+
+![!\[alt text\](image.png)](pic/instalando_pandas_venv.png)
 
 
-## Recriando pasta django com poetry
-Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados (main)
+## Instalação de pipx
+Para garantir que o ambiente de desenvolvimento esteja configurado corretamente, é necessário instalar o pipx. O pipx é uma ferramenta que facilita a instalação e o gerenciamento de pacotes Python em ambientes isolados. Ele garante que as dependências de cada projeto sejam gerenciadas de forma separada, evitando conflitos entre versões de pacotes.
 
+### Passos
+```bash
+pip install pipx
+``` 
+![!\[alt text\](image.png)](pic/instalando_pipx.png)
+
+## Instalação do Poetry
+O Poetry é uma ferramenta de gerenciamento de dependências e de empacotamento para projetos Python. Ele simplifica o processo de gerenciamento de dependências, permitindo a especificação precisa das versões dos pacotes e garantindo a consistência do ambiente de desenvolvimento em diferentes máquinas.
+
+### Passos
+```bash
+pipx install poetry --force
 ```
-$ poetry config virtualenvs.in-project true
+![!\[alt text\](image.png)](pic/instalacao_poetry.png)
+
+## Instalação do IPython
+O IPython é um poderoso interpretador interativo para Python que oferece recursos adicionais e uma experiência aprimorada de programação interativa. Ele fornece uma interface de linha de comando mais avançada, facilitando o desenvolvimento e a depuração de código Python.
+
+### Passos
+```bash
+pipx install ipython --force
 ```
+![!\[alt text\](image.png)](pic/instalacao_ipython.png)
+
+## Instalação do IPython
+O IPython é um poderoso interpretador interativo para Python que oferece recursos adicionais e uma experiência aprimorada de programação interativa. Ele fornece uma interface de linha de comando mais avançada, facilitando o desenvolvimento e a depuração de código Python.
+
+### Utilização do IPython
+Após a instalação, você pode iniciar o IPython digitando o seguinte comando no terminal:
+
+![!\[alt text\](image.png)](pic/utilizando_ipython.png)
 
 
-Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados (main)
+## Utilização do Poetry para Gerenciamento de Projetos Python
+O Poetry é uma ferramenta de gerenciamento de dependências e projetos Python que oferece uma maneira simplificada e eficiente de criar e gerenciar projetos Python. A seguir, estão listados os principais comandos e suas funções:
 
-```
-$ poetry new projeto_django
-```
-Created package projeto_django in projeto_django
-```
+### Configuração de Ambiente Virtual Dentro do Projeto:
 
-Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados (main)
+```bash
+poetry config virtualenvs.in-project true
+```
+Este comando configura o Poetry para criar e gerenciar ambientes virtuais dentro do diretório do projeto, mantendo as dependências isoladas em cada projeto.
 
-`$ cd projeto_django/`
+### Criação de um Novo Projeto Django:
+````bash
+poetry new projeto_django
+````
+Este comando cria um novo projeto Django chamado "projeto_django" dentro do diretório atual.
 
-Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados/projeto_django (main)
+### Ativação do Ambiente Virtual e Definição da Versão do Python:
+```bash
+pyenv local 3.12.1
+poetry env use 3.12.1
+```
+Esses comandos ativam o ambiente virtual criado pelo Poetry e definem a versão específica do Python a ser usada no projeto.
 
-`
-$ poetry env use 3.12.1
-`
+### Instalação de Dependências:
+
+```bash
+poetry add django
 ```
-Creating virtualenv projeto-django in C:\Users\Adriano\Documents\GitHub\000_Bootcamp_Engenharia_Dados\projeto_django\.venv
-Using virtualenv: C:\Users\Adriano\Documents\GitHub\000_Bootcamp_Engenharia_Dados\projeto_django\.venv
+Este comando adiciona a biblioteca Django ao projeto, junto com suas dependências necessárias. O Poetry gerencia as dependências e as adiciona ao arquivo pyproject.toml.
+
+### Remoção de Dependências:
+
+```bash
+poetry remove django
 ```
-Adriano@agvs-001 MINGW64 ~/Documents/GitHub/000_Bootcamp_Engenharia_Dados/projeto_django (main)
-```
-```
-$ poetry add django
+Este comando remove a biblioteca Django e suas dependências do projeto. O Poetry atualiza automaticamente o arquivo pyproject.toml para refletir as mudanças nas dependências.
+
+### Resumo
+O Poetry simplifica o processo de gerenciamento de projetos Python, permitindo a criação de ambientes virtuais isolados, a definição de dependências precisas e a instalação de pacotes de forma consistente. Este README fornece uma visão geral dos comandos básicos necessários para começar a trabalhar com o Poetry em seus projetos.
+
